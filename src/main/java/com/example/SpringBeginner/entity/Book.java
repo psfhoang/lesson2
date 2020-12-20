@@ -16,8 +16,8 @@ public class Book {
     @Column(name="name")
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="author_id")
+    @ManyToOne
+    @JoinColumn(name="author_id",nullable = false)
     private Author author;
 
     public Author getAuthor() {
@@ -42,5 +42,14 @@ public class Book {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", author=" + author +
+                '}';
     }
 }

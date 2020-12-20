@@ -1,6 +1,9 @@
 package com.example.SpringBeginner.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,9 +16,9 @@ public class Author {
 
     @Column(name = "name")
     private String name;
-
-    @OneToMany(mappedBy = "author",cascade = CascadeType.ALL)
-    private List<Book> books;
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "author")
+    private List<Book> books = new ArrayList<>();
 
     public List<Book> getBooks() {
         return books;
@@ -39,5 +42,14 @@ public class Author {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", books=" + books +
+                '}';
     }
 }
