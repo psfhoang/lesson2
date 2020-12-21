@@ -1,9 +1,10 @@
 package com.example.SpringBeginner.controller;
 
+import com.example.SpringBeginner.dtobai1.InputData;
+import com.example.SpringBeginner.dtobai1.ResultResponse;
 import com.example.SpringBeginner.entity.Book;
 import com.example.SpringBeginner.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,6 +36,9 @@ public class BookController {
     public Book updateBook(@RequestBody Book book){
         return bookService.updateBook(book);
     }
-
+    @PostMapping("/check")
+    public ResultResponse check(@RequestBody InputData inputData){
+        return bookService.response(inputData);
+    }
 
 }

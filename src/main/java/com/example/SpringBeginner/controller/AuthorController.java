@@ -1,5 +1,7 @@
 package com.example.SpringBeginner.controller;
 
+import com.example.SpringBeginner.dtobai2.Input;
+import com.example.SpringBeginner.dtobai2.Output;
 import com.example.SpringBeginner.entity.Author;
 import com.example.SpringBeginner.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/author")
 public class AuthorController {
 
@@ -37,5 +39,9 @@ public class AuthorController {
     public Author updateAuthor(@RequestBody Author author){
         return authorService.updateAuthor(author);
 
+    }
+    @GetMapping("/sort")
+    public Output sort(@RequestBody Input input){
+        return authorService.findByNameOrderByNameAsc(input);
     }
 }

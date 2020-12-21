@@ -1,8 +1,11 @@
 package com.example.SpringBeginner.service;
 
+import com.example.SpringBeginner.dtobai2.Input;
+import com.example.SpringBeginner.dtobai2.Output;
 import com.example.SpringBeginner.entity.Author;
 import com.example.SpringBeginner.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +33,17 @@ public class AuthorService {
         return authorRepository.save(author);
     }
 
+    public Output findByNameOrderByNameAsc(Input input){
+        Sort sortable =null;
+        if(input.getSort().equals("asc")){
+            sortable=Sort.by("name").ascending();
+        }
+        if(input.getSort().equals("desc")){
+            sortable=Sort.by("name").descending();
+        }
+        List<Author> authors =authorRepository.findByNameOrderByNameAsc(input.getSearchText(),sortable);
+        return new Output(200,authors.size(),authors);
+    }
 
 
 }

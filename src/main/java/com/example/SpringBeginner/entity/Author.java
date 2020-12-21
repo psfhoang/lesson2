@@ -16,7 +16,7 @@ public class Author {
 
     @Column(name = "name")
     private String name;
-    @JsonIgnore
+
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "author")
     private List<Book> books = new ArrayList<>();
 

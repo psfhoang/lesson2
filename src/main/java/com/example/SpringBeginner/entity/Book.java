@@ -1,5 +1,6 @@
 package com.example.SpringBeginner.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.persistence.*;
@@ -15,7 +16,7 @@ public class Book {
 
     @Column(name="name")
     private String name;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="author_id",nullable = false)
     private Author author;
