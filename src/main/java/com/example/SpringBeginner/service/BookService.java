@@ -1,7 +1,6 @@
 package com.example.SpringBeginner.service;
 
-import com.example.SpringBeginner.dtobai1.InputData;
-import com.example.SpringBeginner.dtobai1.ResultResponse;
+
 import com.example.SpringBeginner.entity.Author;
 import com.example.SpringBeginner.entity.Book;
 import com.example.SpringBeginner.repository.BookRepository;
@@ -38,13 +37,13 @@ public class BookService {
 
 
 
-    public ResultResponse response(InputData data){
-        Book book = this.findBookById(data.getBookId());
-        if(book.getAuthor().getId()==data.getAuthorId()){
-            return new ResultResponse(200,true);
-        }else {
-            return new ResultResponse(200,false);
-        }
-    }
+//    public ResultResponse response(InputData data){
+//        Book book = this.findBookById(data.getBookId());
+//        if(book.getAuthor().getId()==data.getAuthorId()){
+//            return new ResultResponse(200,true);
+//        }else {
+//            return new ResultResponse(200,false);
+//        }
+//    }
 
 }
